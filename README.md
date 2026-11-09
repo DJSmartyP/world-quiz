@@ -1,9 +1,14 @@
 # World Scanner
 
-A browser-based capital city quiz with country flags and a world-scanner theme.
+A friendly, browser-based geography game with four ways to play:
 
-Open `index.html` in a browser to play. No install, build step, account, or API key is needed.
+- **Match the Flag:** see a flag and pick its country.
+- **Match the Map:** see a country silhouette and pick its country.
+- **Country Match:** see a country and pick its capital.
+- **Capital Match:** see a capital and pick its country.
 
-Each mission asks for the capitals of 10 randomly selected countries within two minutes. The final score is **100 points per correct answer + 2 points per second remaining** when at least one answer is correct. Hints reveal the first letter and letter count; skipped questions reveal the answer. Players can try again with a new selection. The question bank contains more than 100 countries and avoids repeats until the full bank has been used.
+Each mission has 10 questions and three choices per question. There is no time limit. Correct answers earn 100 points each, plus a time bonus of up to 300 points when at least one answer is right. Players can retry the same mode or choose a different one.
 
-Flag images load from [FlagCDN](https://flagcdn.com/). A flag emoji fallback appears if an image cannot load.
+Open `index.html` in a browser to play. No install, build step, account, or API key is needed. Run `node tests/game.test.js` to check the game flow.
+
+Flags load from [FlagCDN](https://flagcdn.com/), with emoji fallback. The local silhouette SVGs are generated from [Natural Earth](https://www.naturalearthdata.com/about/terms-of-use/) public-domain country outlines. The source GeoJSON is kept in `assets/natural-earth-countries.geojson`; run `node tools/generate-maps.js` to regenerate the silhouettes.
