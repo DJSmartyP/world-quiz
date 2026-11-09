@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071729">
+  <meta name="description" content="World Scanner is a fast, flag-filled capital city quiz. Scan a country, name its capital, and build your streak.">
+  <title>World Scanner — Capital City Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="World Scanner home"><span class="brand-mark" aria-hidden="true">◎</span><span>WORLD<span class="brand-light">SCANNER</span></span></a>
+      <div class="topbar-right"><span class="signal"><span class="signal-dot"></span> SIGNAL ACTIVE</span><button id="sound-toggle" class="icon-button" type="button" aria-label="Turn sound off" title="Toggle sound">♪</button></div>
+    </header>
+
+    <main>
+      <section id="intro" class="screen intro-screen">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> GEOGRAPHY // LIVE SCAN</div>
+          <h1>How well do you<br><em>know the world?</em></h1>
+          <p class="lede">A country appears on the radar. You name its capital. Travel the globe, sharpen your instincts, and see how far your knowledge takes you.</p>
+          <div class="intro-actions"><button id="start-button" class="primary-button" type="button">START SCANNING <span aria-hidden="true">↗</span></button><span class="micro-copy">10 countries · 1 mission · endless places to explore</span></div>
+          <div class="intro-stats"><div><strong id="country-count">80+</strong><span>COUNTRIES</span></div><div><strong>10</strong><span>PER MISSION</span></div><div><strong>∞</strong><span>WAYS TO EXPLORE</span></div></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true"><div class="radar"><div class="radar-sweep"></div><div class="radar-ring ring-one"></div><div class="radar-ring ring-two"></div><div class="radar-ring ring-three"></div><div class="radar-cross cross-h"></div><div class="radar-cross cross-v"></div><span class="radar-ping ping-one"></span><span class="radar-ping ping-two"></span><span class="radar-ping ping-three"></span><div class="radar-center">✦</div></div><span class="radar-label top-label">GLOBAL POSITIONING<br>ONLINE_</span><span class="radar-label bottom-label">LAT 51.5072° N<br>LONG 0.1276° W</span><span class="scan-corner corner-tl"></span><span class="scan-corner corner-tr"></span><span class="scan-corner corner-bl"></span><span class="scan-corner corner-br"></span></div>
+      </section>
+
+      <section id="game" class="screen game-screen hidden" aria-labelledby="game-title">
+        <div class="game-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MISSION IN PROGRESS</div><h2 id="game-title">Identify the capital.</h2></div><div class="mission-tag">MISSION <span id="mission-number">001</span></div></div>
+        <div class="game-layout">
+          <div class="scan-panel"><div class="panel-top"><span><span class="live-dot"></span> SCANNING TARGET</span><span id="question-count">01 / 10</span></div><div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div><div class="target-display"><div class="target-orbit orbit-one"></div><div class="target-orbit orbit-two"></div><div class="target-orbit orbit-three"></div><div class="target-cross target-cross-h"></div><div class="target-cross target-cross-v"></div><img id="country-flag" class="flag" alt="" width="156" height="104"><span id="flag-fallback" class="flag-fallback" aria-hidden="true"></span><span class="target-corner tc-tl"></span><span class="target-corner tc-tr"></span><span class="target-corner tc-bl"></span><span class="target-corner tc-br"></span></div><div class="target-details"><div class="tiny-label">COUNTRY DETECTED</div><h3 id="country-name">—</h3><span id="region-name" class="region-chip">—</span></div></div>
+          <div class="answer-panel"><div class="panel-top"><span>CAPITAL IDENTIFICATION</span><span class="panel-index">// 01</span></div><div class="answer-content"><div class="tiny-label">YOUR OBJECTIVE</div><p class="answer-question">What is the capital city of <strong id="country-name-question">this country</strong>?</p><form id="answer-form" autocomplete="off"><label for="answer-input">ENTER CAPITAL CITY</label><div class="input-wrap"><span aria-hidden="true">⌕</span><input id="answer-input" name="answer" type="text" placeholder="Type your answer..." autocapitalize="words" spellcheck="false" required><span class="input-cursor" aria-hidden="true">_</span></div><button id="submit-button" class="primary-button submit-button" type="submit">LOCK IN ANSWER <span aria-hidden="true">↗</span></button></form><div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div><div class="answer-footer"><button id="hint-button" class="text-button" type="button">✧ REVEAL A HINT</button><button id="skip-button" class="text-button" type="button">SKIP COUNTRY ↗</button></div></div></div>
+        </div>
+        <div class="scorebar"><div><span class="score-icon">✦</span><span>CORRECT</span><strong id="correct-value">00</strong></div><div><span class="score-icon">◷</span><span>TIME LEFT</span><strong id="time-value">02:00</strong></div><div><span class="score-icon">◎</span><span>EST. SCORE</span><strong id="score-value">000</strong></div><div class="scorebar-status">SCANNER STATUS <span class="signal-dot"></span> ACTIVE</div></div>
+      </section>
+
+      <section id="results" class="screen results-screen hidden" aria-labelledby="results-title"><div class="results-card"><div class="eyebrow"><span class="eyebrow-line"></span> SCAN COMPLETE</div><div class="results-emblem" aria-hidden="true">✦</div><h2 id="results-title">Mission complete.</h2><p id="results-message" class="results-message"></p><div class="results-grid"><div><span>FINAL SCORE</span><strong id="final-score">000</strong></div><div><span>CORRECT</span><strong id="final-correct">0 / 10</strong></div><div><span>TIME BONUS</span><strong id="final-time">+0</strong></div></div><button id="again-button" class="primary-button" type="button">SCAN AGAIN <span aria-hidden="true">↗</span></button><p class="results-note">Score = 100 per correct answer + 2 per second left when at least one answer is correct. New countries are selected for every mission.</p></div></section>
+    </main>
+    <footer class="footer"><span>WORLD SCANNER <span class="footer-dim">© 2026</span></span><span>MADE FOR CURIOUS MINDS <span aria-hidden="true">✦</span></span><span>EXPLORE EVERYWHERE</span></footer>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>
